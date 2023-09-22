@@ -372,7 +372,7 @@ int MenuDrawFunctions::DrawWrappedTextLines(int x, int y, const std::vector<std:
   return offset;
 }
 
-constexpr int kDefaultMarginHeight = 0;
+constexpr int kDefaultMarginHeight = 100;
 constexpr int kDefaultMarginWidth = 0;
 constexpr int kDefaultAnimationFps = 30;
 
@@ -489,7 +489,7 @@ int ScreenRecoveryUI::GetProgressBaseline() const {
 // Should only be called with updateMutex locked.
 void ScreenRecoveryUI::draw_background_locked() {
   pagesIdentical = false;
-  gr_color(0, 0, 0, 255);
+  gr_color(255, 255, 255, 255);
   gr_clear();
   if (current_icon_ != NONE) {
     if (max_stage != -1) {
@@ -574,30 +574,30 @@ void ScreenRecoveryUI::SetColor(UIElement e) const {
       if (fastbootd_logo_enabled_)
         gr_color(0xfd, 0xd8, 0x35, 255);
       else
-        gr_color(0x87, 0x61, 0xb5, 255);
+        gr_color(0xff, 0xff, 0xff, 255);
       break;
     case UIElement::HEADER:
       if (fastbootd_logo_enabled_)
         gr_color(0xc3, 0x72, 0x81, 255);
       else
-        gr_color(0x67, 0x5a, 0xb5, 255);
+        gr_color(0xd2, 0x90, 0x74, 255);
       break;
     case UIElement::MENU:
-      gr_color(0x87, 0x61, 0xb5, 255);
+      gr_color(0x51, 0x4d, 0x4a, 255);
       break;
     case UIElement::MENU_SEL_BG:
     case UIElement::SCROLLBAR:
       if (fastbootd_logo_enabled_)
         gr_color(0xa7, 0x56, 0x65, 255);
       else
-        gr_color(0x65, 0x55, 0xb0, 255);
+        gr_color(0x51, 0x4d, 0x4a, 255);
       break;
     case UIElement::MENU_SEL_BG_ACTIVE:
       gr_color(0, 156, 100, 255);
       break;
     case UIElement::MENU_SEL_FG:
       if (fastbootd_logo_enabled_)
-        gr_color(0, 0, 0, 255);
+        gr_color(255, 255, 255, 255);
       else
         gr_color(0xd8, 0xd8, 0xd8, 255);
       break;
@@ -605,7 +605,7 @@ void ScreenRecoveryUI::SetColor(UIElement e) const {
       gr_color(196, 196, 196, 255);
       break;
     case UIElement::TEXT_FILL:
-      gr_color(0, 0, 0, 160);
+      gr_color(255, 255, 255, 160);
       break;
     default:
       gr_color(255, 255, 255, 255);
@@ -629,7 +629,7 @@ void ScreenRecoveryUI::SelectAndShowBackgroundText(const std::vector<std::string
   }
 
   std::lock_guard<std::mutex> lg(updateMutex);
-  gr_color(0, 0, 0, 255);
+  gr_color(255, 255, 255, 255);
   gr_clear();
 
   int text_y = margin_height_;
@@ -803,7 +803,7 @@ void ScreenRecoveryUI::draw_screen_locked() {
     return;
   }
 
-  gr_color(0, 0, 0, 255);
+  gr_color(255, 255, 255, 255);
   gr_clear();
 
   draw_menu_and_text_buffer_locked(GetMenuHelpMessage());
